@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1039644110449",
+    "project_id": "appproyectopracticas",
+    "storage_bucket": "appproyectopracticas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039644110449:android:f70af0f85c774730b9f5d0",
+        "android_client_info": {
+          "package_name": "com.example.proyectopracticas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ_DV0-ti-PMaXnGT4hp2-pOFtM4Lng28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

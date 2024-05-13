@@ -1,0 +1,2 @@
+1. Añadida funcionalidad en el manifest para eliminar el login de la pila de activities una vez el usuario inicia sesión (android:noHistory)
+2.

@@ -1,4 +1,4 @@
-package Vista;
+package Vista.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +24,7 @@ import com.example.proyectopracticas.R;
 import Controlador.RetrofitAPI;
 import Controlador.RetrofitClientInstance;
 import Modelo.LoginResponse;
+import Vista.PaginaInicial;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -96,14 +97,17 @@ public class InicioSesionFragment extends Fragment {
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                     SharedPreferences sharedPreferences = v.getContext().getSharedPreferences(v.getResources().getString(R.string.loginPreference), Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    if(response.body().getNombreUsuario() !=null){
-                        editor.putString("nombreUsuario", response.body().getNombreUsuario());
+                    if(response.body().getIdUsuario() !=null){
+                        editor.putString(getString(R.string.idPreference), response.body().getIdUsuario());
+                        editor.putString(getString(R.string.usuarioPreference), response.body().getUsuario());
+                        editor.putString(getString(R.string.emailPreference), response.body().getEmail());
+                        editor.putString(getString(R.string.estadoRegistroPreference), response.body().getRegistro());
                         editor.apply();
                         Intent i = new Intent(v.getContext(), PaginaInicial.class);
                         startActivity(i);
 
                     }else{
-                        Toast.makeText(v.getContext(), "No existe este usuario", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), "No existe este usuario " + response.body().getRegistro() , Toast.LENGTH_SHORT).show();
 
                     }
                 }

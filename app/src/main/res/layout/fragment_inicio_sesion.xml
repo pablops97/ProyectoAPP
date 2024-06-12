@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/fondo_inicio_registro"
-            tools:context="Vista.InicioSesionFragment">
+            tools:context="Vista.Fragments.InicioSesionFragment">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/botonInicioSesion"

@@ -30,6 +30,9 @@ android {
     packagingOptions {
         exclude ("META-INF/androidx.cardview_cardview.version")
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -40,6 +43,10 @@ dependencies {
     implementation(files("libs\\mysql-connector-j-8.4.0.jar"))
     implementation("com.android.support:cardview-v7:28.0.0")
     implementation(files("libs\\mariadb-java-client-3.3.3.jar"))
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.navigation:navigation-fragment:2.7.7")
+    implementation("androidx.navigation:navigation-ui:2.7.7")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -52,4 +59,7 @@ dependencies {
     // Retrofit que convierte el formato gson
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    //LIBRERIA PICASSO PARA LAS IMAGENES
+    implementation("com.squareup.picasso:picasso:2.8")
 }

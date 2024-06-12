@@ -6,44 +6,49 @@ public class LoginResponse {
 
     //Clase para extraer los datos del usuario de la API
 
-    @SerializedName("nombreusuario")
-    private String nombreUsuario;
+    @SerializedName("idResultado")
+    private String idUsuario;
+    @SerializedName("nombre")
+    private String usuario;
+
     @SerializedName("email")
     private String email;
-    @SerializedName("telefono")
-    private int telefono;
 
-    public LoginResponse(String nombreUsuario, String email, int telefono) {
-        this.nombreUsuario = nombreUsuario;
+    @SerializedName("registro")
+    private String registro;
+
+    public LoginResponse(String idUsuario, String usuario, String email, String registro) {
+        this.idUsuario = idUsuario;
+        this.usuario = usuario;
         this.email = email;
-        this.telefono = telefono;
-    }
-
-    public LoginResponse() {
-    }
-
-
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+        this.registro = registro;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getIdUsuario() {
+        return idUsuario;
     }
 
-    public int getTelefono() {
-        return telefono;
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(String registro) {
+        this.registro = registro;
     }
 }

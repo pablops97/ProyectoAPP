@@ -1,4 +1,4 @@
-package Vista;
+package Vista.Fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

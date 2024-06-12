@@ -13,6 +13,8 @@ import android.os.Bundle;
 import com.example.proyectopracticas.R;
 
 import Controlador.ClaseComprobar;
+import Vista.Fragments.InicioSesionFragment;
+import Vista.Fragments.RegistroFragment;
 
 public class InicioRegistroView extends AppCompatActivity {
 

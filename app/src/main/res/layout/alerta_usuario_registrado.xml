@@ -23,12 +23,12 @@
                 android:fontFamily="@font/poppins_black"
                 android:text="TextView"
                 android:textSize="34sp"
-                app:layout_constraintEnd_toEndOf="@+id/imageView"
-                app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintEnd_toEndOf="@+id/imagenUsuarioSidebar"
+                app:layout_constraintStart_toStartOf="@+id/imagenUsuarioSidebar"
+                app:layout_constraintTop_toBottomOf="@+id/imagenUsuarioSidebar" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imagenUsuarioSidebar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 app:srcCompat="@drawable/icono_feliz"

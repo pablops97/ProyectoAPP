@@ -17,15 +17,20 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name="Vista.PaginaInicial"
+            android:exported="false"
+            android:label="@string/title_activity_pagina_inicial"
+            android:theme="@style/Theme.ProyectoPracticas.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="Vista.CompletarRegistroView"
+            android:exported="false" />
+        <activity
             android:name="PupUps.PopUpError"
             android:exported="false" />
         <activity
             android:name="PupUps.PopUpPass"
             android:exported="false" />
-        <activity
-            android:name="Vista.PaginaInicial"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="Vista.SplashScreenInicio"
             android:exported="false" />

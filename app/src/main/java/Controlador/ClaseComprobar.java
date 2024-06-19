@@ -17,7 +17,7 @@ public class ClaseComprobar {
     //METODOS REGEX
 
     public final static boolean isValidPassword(String target) {
-        return Pattern.compile("^(?=.*\\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{4,12}$").matcher(target).matches();
+        return Pattern.compile("^^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$").matcher(target).matches();
     }
 
     public final static boolean isValidName(String target) {
@@ -30,7 +30,10 @@ public class ClaseComprobar {
     }
 
     public final static boolean isEmailValid(String email) {
-        final Pattern EMAIL_REGEX = Pattern.compile("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", Pattern.CASE_INSENSITIVE);
+        final Pattern EMAIL_REGEX = Pattern.compile(
+                "^[a-zA-Z0-9._%+-]+@(gmail|outlook|hotmail|yahoo|aol|icloud|live|msn|mail|yandex|protonmail|inbox)\\.(com|es|net|org|info|gov|edu)(\\.[a-z]{2})?$",
+                Pattern.CASE_INSENSITIVE
+        );
         return EMAIL_REGEX.matcher(email).matches();
     }
 
@@ -39,4 +42,7 @@ public class ClaseComprobar {
         SharedPreferences sharedPreferences = context.getSharedPreferences(nombreArchivo, Context.MODE_PRIVATE);
         return sharedPreferences.getString(clave, null) != null;
     }
+
+
+    //METODO PARA COMPROBAR SI UN EVENTO ESTÁ LLENO O NO
 }

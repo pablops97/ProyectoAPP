@@ -2,7 +2,7 @@ package Modelo;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SignUpResponse {
+public class ConfirmacionResponse {
     //Clase para comprobar si el registro ha salido correcto o no
 
     @SerializedName("mensaje")
@@ -10,7 +10,7 @@ public class SignUpResponse {
     @SerializedName("codigo")
     private int codigo;
 
-    public SignUpResponse() {
+    public ConfirmacionResponse() {
     }
 
     public String getMensaje() {

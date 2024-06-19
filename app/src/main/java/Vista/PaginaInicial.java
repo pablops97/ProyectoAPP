@@ -1,10 +1,14 @@
 package Vista;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.proyectopracticas.R;
@@ -19,13 +23,18 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectopracticas.databinding.ActivityPaginaInicialBinding;
+import com.squareup.picasso.Picasso;
 
-public class PaginaInicial extends AppCompatActivity {
+import Controlador.UrlInterface;
+
+public class PaginaInicial extends AppCompatActivity implements UrlInterface {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityPaginaInicialBinding binding;
     TextView nombreUsuarioSidebar;
     TextView emailUsuarioSidebar;
+    ImageView fotoUsuario;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +47,23 @@ public class PaginaInicial extends AppCompatActivity {
         binding.appBarPaginaInicial.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                new AlertDialog.Builder(PaginaInicial.this)
+                        .setTitle(R.string.tituloBotonAbandonarSesion)
+                        .setPositiveButton(R.string.opcionSi, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //PARA SALIR DE LA SESIÓN ELIMINAMOS LAS SHAREDPREFERENCES Y DEVOLVEMOS AL USUARIO AL INICIO DE SESIÓN
+                                SharedPreferences sharedPreferences = getSharedPreferences(getResources().getString(R.string.loginPreference), Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.clear();
+                                editor.apply();
+                                Intent i = new Intent(PaginaInicial.this, InicioRegistroView.class);
+                                (PaginaInicial.this).finish();
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton(R.string.opcionNo, null)
+                        .create().show();
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -47,7 +71,7 @@ public class PaginaInicial extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_gallery)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_pagina_inicial);
@@ -59,10 +83,15 @@ public class PaginaInicial extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0); // Obtener la vista de cabecera del NavigationView
         nombreUsuarioSidebar = headerView.findViewById(R.id.nombreUsuarioSidebar);
         emailUsuarioSidebar = headerView.findViewById(R.id.emailUsuarioSidebar);
+        fotoUsuario = headerView.findViewById(R.id.imagenUsuarioSidebar);
 
         SharedPreferences sharedPreferences = getSharedPreferences(getResources().getString(R.string.loginPreference), Context.MODE_PRIVATE);
         nombreUsuarioSidebar.setText(sharedPreferences.getString(getResources().getString(R.string.usuarioPreference), null));
         emailUsuarioSidebar.setText(sharedPreferences.getString(getResources().getString(R.string.emailPreference), null));
+        Picasso.get()
+                .load(URL_USUARIO_IMAGENES + sharedPreferences.getString(getResources().getString(R.string.imagenUsuarioPreference), null))
+                .placeholder(R.drawable.icono_feliz)
+                .into(fotoUsuario);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

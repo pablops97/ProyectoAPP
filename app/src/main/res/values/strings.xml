@@ -2,7 +2,8 @@
     <string name="app_name">ProyectoPracticas</string>
     <string name="enlaceDatabase">jdbc:mysql://192.168.1.38:3306/practica</string>
     <string name="urlInsertarUsuario">http://192.168.1.38/APIREST/insertar_usuario.php</string>
-    <string name="urlAPI">http://192.168.1.38/APIREST/</string>
+    <string name="urlAPI">http://192.168.203.176/APIREST/</string>
+    <string name="urlAPIInternetTelefono">http://192.168.203.176/APIREST/</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -39,6 +40,65 @@
     <string name="usuarioPreference">nombreUsuario</string>
     <string name="estadoRegistroPreference">estadoRegistro</string>
     <string name="emailPreference">email</string>
+    <string name="imagenUsuarioPreference">imagen</string>
+    <string name="cuentaIbanPreference">iban</string>
+
+
+    <!-- TODO: INFORMACION EVENTO-->
+    <string name="tituloInformacionEvento">Información evento</string>
+    <string name="tituloDescripcionInformacionEvento">Descripción</string>
+    <string name="botonInscribir">INSCRIBIR</string>
+    <string name="fechaInscripcionInformacion">Inicio Inscripción</string>
+    <string name="fechaInicioInformacion">Inicio</string>
+    <string name="fechaFinInformacion">Fin</string>
+    <string name="numeroPlazasInformacion">Plazas</string>
+    <string name="estadoEvento">Estado</string>
+    <string name="precioEvento">Precio</string>
+    <string name="plazasEvento">Plazas</string>
+
+    <!-- TODO: ALERT DIALOG CONFIRMACION INSCRIPCION-->
+    <string name="mensajeAlertInscripcion">¿Desea insribirse al evento?</string>
+    <string name="opcionSi">Si</string>
+    <string name="opcionNo">No</string>
+
+    <!-- TODO: ALERT DIALOG ABANDONAR SESIÓN-->
+    <string name="tituloBotonAbandonarSesion">¿Seguro que desea abandonar la sesión?</string>
+
+
+    <!-- TODO: STRING EDITAR USUARIO -->
+    <string name="tituloEditarUsuario">Editar usuario</string>
+    <string name="textoDetallesEditarUsuario">Detalles del usuario</string>
+    <string name="editarUsuario">Usuario: </string>
+    <string name="editarCorreo">Correo: </string>
+    <string name="editarPass">Contraseña: </string>
+    <string name="confirmarEditarPass">Confirmar contraseña: </string>
+    <string name="editarIban">Iban: </string>
+    <string name="botonEditar">Editar</string>
+
+    <!-- TODO: INFORMACION CONTRASEÑA -->
+    <string name="textoInfoContraseña">RECUERDA:</string>
+    <string name="textoInfoContraseña2">La contraseña debe tener:</string>
+    <string name="textoInfoContraseña3">- Al menos 8 caracteres</string>
+    <string name="textoInfoContraseña4">- Al menos una letra mayúscula (A-Z)</string>
+    <string name="textoInfoContraseña5">- Al menos una letra minúscula (a-z)</string>
+    <string name="textoInfoContraseña6">- Al menos tres letras minúsculas adicionales (a-z)</string>
+    <string name="textoInfoContraseña7">- Al menos un número (0-9)</string>
+    <string name="textoInfoContraseña8">- Al menos un carácter especial (!@#$;*)</string>
+    
+    
+    <!-- TODO: COMPLETAR REGISTRO -->
+    <string name="tituloCompletarRegistro">Completar registro</string>
+    <string name="informacionCompletarRegistro">Para poder acceder a las funciones de la aplicación, es necesario que previamente completes tu perfil</string>
+    <string name="nombreCompletarRegistro">Nombre: </string>
+    <string name="apellidosCompletarRegistro">Apellidos: </string>
+    <string name="direccionCompletarRegistro">Dirección</string>
+    <string name="provinciaCompletarRegistro">Provincia: </string>
+    <string name="cpCompletarRegistro">CP: </string>
+    <string name="fechaNacimientoCompletarRegistro">Fecha de nacimiento: </string>
+    <string name="ibanCompletarRegistro">Cuenta iban (ES no es necesario)</string>
+
+
+
 
     <string name="title_activity_pagina_inicial">PaginaInicial</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -48,9 +108,13 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_home">Eventos</string>
+    <string name="menu_mis_eventos">Mis Eventos</string>
+    <string name="menu_editar_perfil">Editar perfil</string>
+
+    <string name="tituloHome">Eventos</string>
+    <string name="tituloMisEventos">Mis Eventos</string>
+    <string name="tituloPerfil">Editar perfil</string>
 
 
 </resources>

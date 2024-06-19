@@ -62,4 +62,7 @@ dependencies {
 
     //LIBRERIA PICASSO PARA LAS IMAGENES
     implementation("com.squareup.picasso:picasso:2.8")
+
+    //libreria para usar el SwipeRefreshLayout
+    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 }

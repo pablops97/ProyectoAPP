@@ -20,13 +20,14 @@
             android:id="@+id/nombreRegistroField"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="80dp"
             android:ems="10"
             android:fontFamily="@font/poppins_regular"
             android:hint="@string/nombreRegistro"
             android:inputType="text"
             android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailUsuarioSidebar" />
 
@@ -59,20 +60,6 @@
             app:layout_constraintTop_toBottomOf="@+id/confirmarPassField" />
 
         <EditText
-            android:id="@+id/telefonoRegistroField"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:ems="10"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="@string/telefonoRegistro"
-            android:inputType="phone"
-            android:textColorHint="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/correoRegistroField"
-            app:layout_constraintStart_toStartOf="@+id/correoRegistroField"
-            app:layout_constraintTop_toBottomOf="@+id/correoRegistroField" />
-
-        <EditText
             android:id="@+id/confirmarPassField"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -90,13 +77,14 @@
             android:id="@+id/botonRegistro"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="64dp"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/botonRegistrar"
             app:backgroundTint="@color/verdeClaro"
-            app:layout_constraintEnd_toEndOf="@+id/telefonoRegistroField"
-            app:layout_constraintStart_toStartOf="@+id/telefonoRegistroField"
-            app:layout_constraintTop_toBottomOf="@+id/telefonoRegistroField" />
+            app:layout_constraintEnd_toEndOf="@+id/correoRegistroField"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/correoRegistroField"
+            app:layout_constraintTop_toBottomOf="@+id/correoRegistroField" />
 
         <TextView
             android:id="@+id/emailUsuarioSidebar"
@@ -161,5 +149,16 @@
                     app:layout_constraintTop_toTopOf="@+id/imageView2" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <ImageView
+            android:id="@+id/datosPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/confirmarPassField"
+            app:layout_constraintEnd_toStartOf="@+id/confirmarPassField"
+            app:layout_constraintTop_toTopOf="@+id/confirmarPassField"
+            app:layout_constraintVertical_bias="0.518"
+            app:srcCompat="@drawable/baseline_contact_support_24" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

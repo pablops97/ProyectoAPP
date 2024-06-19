@@ -1,7 +1,7 @@
 package Vista.Fragments;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,8 +27,7 @@ import java.util.Map;
 import Controlador.ClaseComprobar;
 import Controlador.RetrofitAPI;
 import Controlador.RetrofitClientInstance;
-import Modelo.LoginResponse;
-import Modelo.SignUpResponse;
+import Modelo.ConfirmacionResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,9 +37,9 @@ public class RegistroFragment extends Fragment {
     private EditText password;
     private EditText confirmarPassword;
     private EditText correo;
-    private EditText telefono;
     private Button registrar;
     private ImageView checkConfirmarPass;
+    ImageView datosPassword;
 
     /*VARIABLES PARA EL CONTROL DE LOS ESTADOS(correcto o incorrecto)*/
     HashMap<String, Boolean> estados = new HashMap<>();
@@ -73,12 +73,17 @@ public class RegistroFragment extends Fragment {
         password = view.findViewById(R.id.passRegistroField);
         confirmarPassword = view.findViewById(R.id.confirmarPassField);
         correo = view.findViewById(R.id.correoRegistroField);
-        telefono = view.findViewById(R.id.telefonoRegistroField);
         registrar = view.findViewById(R.id.botonRegistro);
         checkConfirmarPass = view.findViewById(R.id.checkConfirmarPass);
+        datosPassword = view.findViewById(R.id.datosPassword);
 
         checkConfirmarPass.setVisibility(View.INVISIBLE);
-
+        datosPassword.setOnClickListener(v1 -> {
+            Dialog settingsDialog = new Dialog(v1.getContext());
+            settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+            settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.informacion_pass, null));
+            settingsDialog.show();
+        });
 
         //EVENTOS DE COMPROBACIONES
         nombreUsuario.addTextChangedListener(new TextWatcher() {
@@ -185,16 +190,15 @@ public class RegistroFragment extends Fragment {
                     Toast.makeText(v.getContext(), errores, Toast.LENGTH_SHORT).show();
                 }else{
                     //LOGICA DE REGISTRO EN BASE DE DATOS
-                    Call<SignUpResponse> call = RetrofitClientInstance
+                    Call<ConfirmacionResponse> call = RetrofitClientInstance
                         .getRetrofitInstance(v.getContext())
                         .create(RetrofitAPI.class)
                         .registro(nombreUsuario.getText().toString(), password.getText().toString()
-                        , correo.getText().toString()
-                        , Integer.parseInt(telefono.getText().toString()));
+                        , correo.getText().toString());
                     //LLAMADA A LA API DE LA BASE DE DATOS PARA RECIBIR UN MENSAJE SI EL REGISTRO HA SIDO EXITOSO O NO
-                    call.enqueue(new Callback<SignUpResponse>() {
+                    call.enqueue(new Callback<ConfirmacionResponse>() {
                         @Override
-                        public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+                        public void onResponse(Call<ConfirmacionResponse> call, Response<ConfirmacionResponse> response) {
                             View usuarioRegistrado = null;
                             //ASIGNAMOS DISTINTAS VIEWS SEGUN EL CODIGO QUE RECIBIMOS DE LA RESPUESTA DE LA API
                             switch(response.body().getCodigo()){
@@ -217,13 +221,12 @@ public class RegistroFragment extends Fragment {
                                         password.setText("");
                                         confirmarPassword.setText("");
                                         correo.setText("");
-                                        telefono.setText("");
                                     })
                                     .create().show();
                         }
 
                         @Override
-                        public void onFailure(Call<SignUpResponse> call, Throwable t) {
+                        public void onFailure(Call<ConfirmacionResponse> call, Throwable t) {
                             Toast.makeText(v.getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
                             Log.e("error registro", t.getMessage());
                         }

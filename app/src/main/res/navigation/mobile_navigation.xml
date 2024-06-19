@@ -14,12 +14,12 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="Vista.ui.eventos.EventosFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_mis_eventos"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="Vista.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_editar_perfil"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>

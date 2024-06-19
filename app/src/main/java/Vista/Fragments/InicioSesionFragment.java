@@ -1,5 +1,6 @@
 package Vista.Fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyectopracticas.R;
@@ -24,6 +26,7 @@ import com.example.proyectopracticas.R;
 import Controlador.RetrofitAPI;
 import Controlador.RetrofitClientInstance;
 import Modelo.LoginResponse;
+import Vista.CompletarRegistroView;
 import Vista.PaginaInicial;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -97,17 +100,25 @@ public class InicioSesionFragment extends Fragment {
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                     SharedPreferences sharedPreferences = v.getContext().getSharedPreferences(v.getResources().getString(R.string.loginPreference), Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    if(response.body().getIdUsuario() !=null){
-                        editor.putString(getString(R.string.idPreference), response.body().getIdUsuario());
+                    if(response.body().getIdUsuario() != -1){
+                        editor.putInt(getString(R.string.idPreference), response.body().getIdUsuario());
                         editor.putString(getString(R.string.usuarioPreference), response.body().getUsuario());
                         editor.putString(getString(R.string.emailPreference), response.body().getEmail());
+                        editor.putString(getString(R.string.imagenUsuarioPreference), response.body().getImagen());
+                        editor.putString(getString(R.string.cuentaIbanPreference), response.body().getCuentaIban());
                         editor.putString(getString(R.string.estadoRegistroPreference), response.body().getRegistro());
                         editor.apply();
                         Intent i = new Intent(v.getContext(), PaginaInicial.class);
                         startActivity(i);
 
+
+
                     }else{
-                        Toast.makeText(v.getContext(), "No existe este usuario " + response.body().getRegistro() , Toast.LENGTH_SHORT).show();
+                        final View customLayout = getLayoutInflater().inflate(R.layout.alert_usuario_no_registrado, null);
+                        TextView texto = customLayout.findViewById(R.id.mensajeNoRegistro);
+                        texto.setText("No existe este usuario");
+                        Toast.makeText(v.getContext(), "No existe este usuario " , Toast.LENGTH_SHORT).show();
+
 
                     }
                 }
